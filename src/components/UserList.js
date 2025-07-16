@@ -21,6 +21,7 @@ const UserList = ({ onUserSelect }) => {
         fetchUsers();
     }, []);
 
+    // filepath: src/components/UserList.js
     const addUser = async () => {
         if (!newUserName.trim()) return;
         setAdding(true);
@@ -29,7 +30,7 @@ const UserList = ({ onUserSelect }) => {
             const response = await axios.post(`${BACKEND_URL}/users`, { name: newUserName });
             setUsers([...users, response.data]);
             setNewUserName('');
-        } catch {
+        } catch (err) {
             setError('Failed to add user.');
         }
         setAdding(false);
