@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
   import UserList from './components/UserList';
-   import ClaimAndLeaderboard from './components/ClaimAndLeaderboard';
+  import ClaimAndLeaderboard from './components/ClaimAndLeaderboard';
 
 const App = () => {
     const [selectedUserId, setSelectedUserId] = useState('');
