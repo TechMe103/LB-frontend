@@ -11,7 +11,7 @@ const UserList = ({ onUserSelect }) => {
         const fetchUsers = async () => {
             try {
                 // const response = await axios.get('http://localhost:5000/users');
-                const response = await axios.get('https://lb-backend-eta.vercel.app/users');
+                const response = await axios.get('https://lb-backend-qh13.vercel.app/users');
 
                 setUsers(response.data);
             } catch {
