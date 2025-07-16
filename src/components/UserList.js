@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
+
 const UserList = ({ onUserSelect }) => {
     const [users, setUsers] = useState([]);
     const [newUserName, setNewUserName] = useState('');
@@ -10,9 +12,7 @@ const UserList = ({ onUserSelect }) => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                // const response = await axios.get('http://localhost:5000/users');
-                const response = await axios.get('https://lb-backend-qh13.vercel.app/users');
-
+                const response = await axios.get(`${BACKEND_URL}/users`);
                 setUsers(response.data);
             } catch {
                 setError('Failed to load users.');
@@ -26,7 +26,7 @@ const UserList = ({ onUserSelect }) => {
         setAdding(true);
         setError(null);
         try {
-            const response = await axios.post('http://localhost:5000/users', { name: newUserName });
+            const response = await axios.post(`${BACKEND_URL}/users`, { name: newUserName });
             setUsers([...users, response.data]);
             setNewUserName('');
         } catch {
